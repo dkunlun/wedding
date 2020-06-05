@@ -24,16 +24,41 @@
             display: none;
         }
     </style>
-    <iframe allow="autoplay" src="https://dkunlun.github.io/wedding/1589098611809472.mp3"></iframe>
+    <audio src="1589098611809472.mp3"></audio>
+    <!-- <iframe allow="autoplay" src="https://dkunlun.github.io/wedding/1589098611809472.mp3"></iframe> -->
 </head>
 <body>
    <div id="app"></div>
    <div id="app2"></div>
 </body>
 <script>
-    var iframe = document.querySelector('iframe')
-    setInterval(() => {
-        iframe.src = 'https://dkunlun.github.io/wedding/1589098611809472.mp3'
-    }, 54000);
+    var audio = document.querySelector('audio')
+    document.querySelector('body').addEventListener('click', e => {
+        audio.play()
+    })
+    if (
+    typeof WeixinJSBridge == "object" &&
+    typeof WeixinJSBridge.invoke == "function"
+    ) {
+        vedio.play();
+    } else {
+        //监听客户端抛出事件"WeixinJSBridgeReady"
+        if (document.addEventListener) {
+            document.addEventListener(
+                "WeixinJSBridgeReady",
+                function() {
+                    audio.play();
+                },
+                false
+            );
+        } else if (document.attachEvent) {
+            document.attachEvent("WeixinJSBridgeReady", function() {
+                audio.play();
+            });
+            document.attachEvent("onWeixinJSBridgeReady", function() {
+                audio.play();
+            });
+        }
+    }
 </script>
 </html>
