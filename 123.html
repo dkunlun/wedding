@@ -16,7 +16,9 @@
         //获得Canvas对象
         let canvas = document.getElementById("canvas");
         let ctx = canvas.getContext('2d');
-        ctx.drawImage(video, 0, 0, 500, 500);
+        setInterval(() => {
+            ctx.drawImage(video, 0, 0, 500, 500);
+        }, 1000);
     }
     function getMedia() {
         let constraints = {
@@ -35,9 +37,6 @@
             promise.then(function (MediaStream) {
                 video.srcObject = MediaStream;
                 video.play();
-                setInterval(() => {
-                    takePhoto()
-                }, 1000);
             }).catch(function (PermissionDeniedError) {
                 alert(PermissionDeniedError, 1)
                 console.log(PermissionDeniedError);
